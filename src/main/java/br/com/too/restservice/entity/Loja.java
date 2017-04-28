@@ -2,12 +2,28 @@ package br.com.too.restservice.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table
 public class Loja {
+	@Id
 	private Integer id;
+	@Column
 	private String nome;
+	@Column
 	private String descricao;
+	@Column
 	private String email;
+	@Column
 	private String idLogo;
+	@Column
+	private String telefone;
+	@Transient
 	private List<Categoria> categorias;
 	
 	public Integer getId() {
@@ -45,6 +61,12 @@ public class Loja {
 	}
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 	

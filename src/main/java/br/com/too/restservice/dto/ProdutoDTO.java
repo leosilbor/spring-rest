@@ -1,20 +1,18 @@
 package br.com.too.restservice.dto;
 
-public class Produto {
+public class ProdutoDTO {
+	private Integer id;
 	private String idImagem;
 	private String nome;
+	private String descricao;
 	private Integer quantidade;
+	private Double valor;
 	
-	public Produto() {
+	public ProdutoDTO() {
 		
 	}
 	
-	public Produto(String idImagem, String nome, Integer quantidade) {
-		super();
-		this.idImagem = idImagem;
-		this.nome = nome;
-		this.quantidade = quantidade;
-	}
+	
 	public String getIdImagem() {
 		return idImagem;
 	}
@@ -32,6 +30,36 @@ public class Produto {
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
+	public Double getValor() {
+		return valor;
+	}
+
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	
 	

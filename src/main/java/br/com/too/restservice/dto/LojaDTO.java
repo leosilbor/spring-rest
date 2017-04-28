@@ -11,19 +11,10 @@ public class LojaDTO {
 	private String nome;
 	private String descrição;
 	private String email;
+	private String telefone;
 	
 	public LojaDTO() {
 		
-	}
-	
-	public LojaDTO(String idLogo, CarrinhoDTO carrinho, MenuDTO menu, String nome, String descrição, String email) {
-		super();
-		this.idLogo = idLogo;
-		this.carrinho = carrinho;
-		this.menu = menu;
-		this.nome = nome;
-		this.descrição = descrição;
-		this.email = email;
 	}
 	
 	public LojaDTO(Loja loja) {
@@ -33,6 +24,7 @@ public class LojaDTO {
 		this.nome = loja.getNome();
 		this.descrição = loja.getDescricao();
 		this.email = loja.getEmail();
+		this.telefone = loja.getTelefone();
 	}
 
 	public String getIdLogo() {
@@ -70,6 +62,14 @@ public class LojaDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 	

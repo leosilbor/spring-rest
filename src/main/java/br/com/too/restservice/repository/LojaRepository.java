@@ -2,18 +2,25 @@ package br.com.too.restservice.repository;
 
 import java.util.Arrays;
 
+import javax.persistence.EntityManager;
+
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.too.restservice.entity.Categoria;
 import br.com.too.restservice.entity.Loja;
 
 @Repository
-public class LojaRepository  {
+public class LojaRepository extends SimpleJpaRepository<Loja, Integer>  {
+
+	public LojaRepository(EntityManager em) {
+		super(Loja.class, em);
+	}
 
 	public Loja find() {
 		Loja loja = new Loja();
 		Categoria catMasculino = new Categoria();
-		catMasculino.setNome("Masculinos");
+		catMasculino.setNome("Masculino");
 			Categoria catMascCamiseta = new Categoria();
 			catMascCamiseta.setNome("Camiseta");
 				Categoria catCamRegata = new Categoria();
@@ -32,6 +39,7 @@ public class LojaRepository  {
 		loja.setId(1);
 		loja.setIdLogo("logo.png");
 		loja.setNome("Loja");
+		loja.setTelefone("+55 (61) 4004-7654");
 		return loja;
 	}
 
