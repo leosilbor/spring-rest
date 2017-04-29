@@ -1,5 +1,7 @@
 package br.com.too.restservice.dto;
 
+import br.com.too.restservice.entity.Produto;
+
 public class ProdutoDTO {
 	private Integer id;
 	private String idImagem;
@@ -13,6 +15,15 @@ public class ProdutoDTO {
 	}
 	
 	
+	public ProdutoDTO(Produto produto) {
+		this.id = produto.getId();
+		this.nome = produto.getNome();
+		this.descricao = produto.getDescricao();
+		this.quantidade = produto.getQuantidade();
+		this.valor = produto.getValor();
+	}
+
+
 	public String getIdImagem() {
 		return idImagem;
 	}

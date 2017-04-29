@@ -28,6 +28,8 @@ public class Produto {
 	private Double valor;
 	@Column
 	private String hashImagemPrincipal;
+	@Column
+	private Integer quantidade;
 	
 	public Produto() {
 		
@@ -38,6 +40,7 @@ public class Produto {
 		this.nome = produtoDTO.getNome();
 		this.descricao = produtoDTO.getDescricao();
 		this.valor = produtoDTO.getValor();
+		this.quantidade = produtoDTO.getQuantidade();
 	}
 	
 	public Integer getId() {
@@ -75,6 +78,14 @@ public class Produto {
 	}
 	public void setHashImagemPrincipal(String hashImagemPrincipal) {
 		this.hashImagemPrincipal = hashImagemPrincipal;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 	
 	
