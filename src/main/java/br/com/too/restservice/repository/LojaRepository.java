@@ -1,46 +1,13 @@
 package br.com.too.restservice.repository;
 
-import java.util.Arrays;
-
-import javax.persistence.EntityManager;
-
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.too.restservice.entity.Categoria;
 import br.com.too.restservice.entity.Loja;
 
 @Repository
-public class LojaRepository extends SimpleJpaRepository<Loja, Integer>  {
+public interface LojaRepository extends CrudRepository<Loja, Integer>  {
 
-	public LojaRepository(EntityManager em) {
-		super(Loja.class, em);
-	}
-
-	public Loja find() {
-		Loja loja = new Loja();
-		Categoria catMasculino = new Categoria();
-		catMasculino.setNome("Masculino");
-			Categoria catMascCamiseta = new Categoria();
-			catMascCamiseta.setNome("Camiseta");
-				Categoria catCamRegata = new Categoria();
-				catCamRegata.setNome("Regata");
-				Categoria catCamSocial = new Categoria();
-				catCamSocial.setNome("Social");
-				catMascCamiseta.setSubCategorias(Arrays.asList(new Categoria[]{catCamRegata, catCamSocial}));
-			Categoria catMascBermuda = new Categoria();
-			catMascBermuda.setNome("Bermuda");
-		catMasculino.setSubCategorias(Arrays.asList(new Categoria[]{catMascCamiseta, catMascBermuda}));
-		
-		
-		loja.setCategorias(Arrays.asList(new Categoria[]{catMasculino}));
-		loja.setDescricao("Descrição da loja");
-		loja.setEmail("email@loja.com.br");
-		loja.setId(1);
-		loja.setIdLogo("logo.png");
-		loja.setNome("Loja");
-		loja.setTelefone("+55 (61) 4004-7654");
-		return loja;
-	}
-
+//	@Query("SELECT l FROM Loja l join fetch l.categorias WHERE l.id = :id")
+//	public Loja findOneFetchCategorias(@Param("id") Integer id);
 }

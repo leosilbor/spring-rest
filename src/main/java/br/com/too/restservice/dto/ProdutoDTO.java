@@ -9,6 +9,7 @@ public class ProdutoDTO {
 	private String descricao;
 	private Integer quantidade;
 	private Double valor;
+	private CategoriaDTO categoria;
 	
 	public ProdutoDTO() {
 		
@@ -21,6 +22,7 @@ public class ProdutoDTO {
 		this.descricao = produto.getDescricao();
 		this.quantidade = produto.getQuantidade();
 		this.valor = produto.getValor();
+		this.categoria = new CategoriaDTO(produto.getCategoria());
 	}
 
 
@@ -71,6 +73,16 @@ public class ProdutoDTO {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+
+	public CategoriaDTO getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(CategoriaDTO categoria) {
+		this.categoria = categoria;
 	}
 	
 	

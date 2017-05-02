@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import br.com.too.restservice.dto.ProdutoDTO;
 
@@ -18,18 +20,27 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column
 	private String nome;
+	
 	@Column
 	private String descricao;
-	@Transient
+	
+	@OneToMany(fetch=FetchType.LAZY)
 	private List<Imagem> imagens;
+	
 	@Column
 	private Double valor;
+	
 	@Column
 	private String hashImagemPrincipal;
+	
 	@Column
 	private Integer quantidade;
+	
+	@ManyToOne
+	private Categoria categoria;
 	
 	public Produto() {
 		
@@ -41,6 +52,7 @@ public class Produto {
 		this.descricao = produtoDTO.getDescricao();
 		this.valor = produtoDTO.getValor();
 		this.quantidade = produtoDTO.getQuantidade();
+		this.categoria = new Categoria(produtoDTO.getCategoria());
 	}
 	
 	public Integer getId() {
@@ -87,6 +99,15 @@ public class Produto {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
 	
 	
 }

@@ -9,7 +9,7 @@ public class LojaDTO {
 	private CarrinhoDTO carrinho;
 	private MenuDTO menu;
 	private String nome;
-	private String descrição;
+	private String descricao;
 	private String email;
 	private String telefone;
 	
@@ -22,7 +22,7 @@ public class LojaDTO {
 		this.idLogo = loja.getIdLogo();
 		this.menu = new MenuDTO(loja.getCategorias());
 		this.nome = loja.getNome();
-		this.descrição = loja.getDescricao();
+		this.descricao = loja.getDescricao();
 		this.email = loja.getEmail();
 		this.telefone = loja.getTelefone();
 	}
@@ -51,11 +51,11 @@ public class LojaDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public String getEmail() {
 		return email;

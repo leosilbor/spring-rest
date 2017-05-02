@@ -2,14 +2,46 @@ package br.com.too.restservice.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import br.com.too.restservice.dto.CategoriaDTO;
+
+@Entity
+@Table
 public class Categoria {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column
 	private String nome;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Categoria pai;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Loja loja;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="pai")
 	private List<Categoria> subCategorias;
 	
+	public Categoria () {
+		
+	}
 	
+	
+	public Categoria(CategoriaDTO categoria) {
+		this.id = categoria.getId();
+		this.nome = categoria.getNome();
+	}
 	public Integer getId() {
 		return id;
 	}
