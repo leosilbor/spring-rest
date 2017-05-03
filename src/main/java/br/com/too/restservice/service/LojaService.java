@@ -18,8 +18,8 @@ public class LojaService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
-	public Loja findOneFetchMenu(Integer id) {
-		Loja loja = lojaRepository.findOne(id);
+	public Loja findOneFetchMenu(String login) {
+		Loja loja = lojaRepository.findByLogin(login);
 		loja.setCategorias(categoriaRepository.findByPaiIsNullFetchSubCategorias(loja));
 		carregarSubCategorias(loja.getCategorias());
 		return loja;

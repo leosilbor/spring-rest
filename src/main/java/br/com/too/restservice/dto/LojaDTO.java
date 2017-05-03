@@ -5,6 +5,7 @@ package br.com.too.restservice.dto;
 import br.com.too.restservice.entity.Loja;
 
 public class LojaDTO {
+	private Integer id;
 	private String idLogo;
 	private CarrinhoDTO carrinho;
 	private MenuDTO menu;
@@ -12,6 +13,7 @@ public class LojaDTO {
 	private String descricao;
 	private String email;
 	private String telefone;
+	private String login;
 	
 	public LojaDTO() {
 		
@@ -19,12 +21,14 @@ public class LojaDTO {
 	
 	public LojaDTO(Loja loja) {
 		super();
+		this.id = loja.getId();
 		this.idLogo = loja.getIdLogo();
 		this.menu = new MenuDTO(loja.getCategorias());
 		this.nome = loja.getNome();
 		this.descricao = loja.getDescricao();
 		this.email = loja.getEmail();
 		this.telefone = loja.getTelefone();
+		this.login = loja.getLogin();
 	}
 
 	public String getIdLogo() {
@@ -71,6 +75,23 @@ public class LojaDTO {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	
 	
 }

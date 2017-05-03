@@ -1,7 +1,9 @@
 package br.com.too.restservice.entity;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.com.too.restservice.dto.ProdutoDTO;
 
@@ -27,7 +31,7 @@ public class Produto {
 	@Column
 	private String descricao;
 	
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="produto")
 	private List<Imagem> imagens;
 	
 	@Column
@@ -39,8 +43,15 @@ public class Produto {
 	@Column
 	private Integer quantidade;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Categoria categoria;
+	
+	@Column
+	@Temporal(TemporalType.DATE)
+	private Date dataInclusao = new Date();
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Loja loja;
 	
 	public Produto() {
 		
@@ -106,6 +117,22 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Date getDataInclusao() {
+		return dataInclusao;
+	}
+
+	public void setDataInclusao(Date dataInclusao) {
+		this.dataInclusao = dataInclusao;
+	}
+
+	public Loja getLoja() {
+		return loja;
+	}
+
+	public void setLoja(Loja loja) {
+		this.loja = loja;
 	}
 	
 	

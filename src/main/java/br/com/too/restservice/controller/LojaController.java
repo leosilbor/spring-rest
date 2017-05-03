@@ -16,8 +16,8 @@ public class LojaController {
     @Autowired
     private LojaService lojaService;
 
-    @RequestMapping(path="/{id}", method=RequestMethod.GET)
-    public LojaDTO dadosLoja(@PathVariable("id") Integer id) {
-        return new LojaDTO(lojaService.findOneFetchMenu(id));
+    @RequestMapping(path="/{login}", method=RequestMethod.GET)
+    public LojaDTO dadosLoja(@PathVariable("login") String login) {
+        return new LojaDTO(lojaService.findOneFetchMenu(login));
     }
 }

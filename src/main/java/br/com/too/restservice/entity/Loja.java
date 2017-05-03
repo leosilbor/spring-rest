@@ -22,6 +22,9 @@ public class Loja {
 	private String nome;
 	
 	@Column
+	private String login;
+	
+	@Column
 	private String descricao;
 	
 	@Column
@@ -36,6 +39,12 @@ public class Loja {
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="loja")
 	private List<Categoria> categorias;
 	
+	public Loja() {
+		
+	}
+	public Loja(Integer id) {
+		this.id = id;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -77,6 +86,12 @@ public class Loja {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 	

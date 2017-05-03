@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,13 +21,13 @@ public class CategoriaController {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    @RequestMapping(method=RequestMethod.GET)
-    public ResponseEntity<Iterable<CategoriaDTO>> pesquisar() {
+    @RequestMapping(path="/{idLoja}", method=RequestMethod.GET)
+    public ResponseEntity<Iterable<CategoriaDTO>> pesquisar(@PathVariable("idLoja") Integer idLoja) {
     	List<CategoriaDTO> dto = new ArrayList<CategoriaDTO>();
-    	Iterable<Categoria> categorias = categoriaRepository.findAll();
+    	List<Categoria> categorias = categoriaRepository.findByLojaId(idLoja);
     	for (Categoria categoria: categorias) {
     		if ( categoria.getSubCategorias()==null || categoria.getSubCategorias().size()==0 )
-    		dto.add(new CategoriaDTO(categoria));
+    			dto.add(new CategoriaDTO(categoria));
     	}
         return ResponseEntity.ok(dto);
     }

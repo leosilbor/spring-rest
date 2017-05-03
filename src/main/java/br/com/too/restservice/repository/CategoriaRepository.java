@@ -17,5 +17,7 @@ public interface CategoriaRepository extends CrudRepository<Categoria, Integer> 
 	@Query("SELECT c FROM Categoria c WHERE c.pai IS NULL AND c.loja = :loja")
 	public List<Categoria> findByPaiIsNullFetchSubCategorias (@Param("loja") Loja loja);
 	
+	public List<Categoria> findByLojaId(Integer idLoja);
+	
 
 }

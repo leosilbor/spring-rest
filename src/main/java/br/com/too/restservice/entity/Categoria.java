@@ -41,6 +41,8 @@ public class Categoria {
 	public Categoria(CategoriaDTO categoria) {
 		this.id = categoria.getId();
 		this.nome = categoria.getNome();
+		if ( categoria.getPai()!=null ) 
+			this.pai = new Categoria(categoria.getPai()) ;
 	}
 	public Integer getId() {
 		return id;

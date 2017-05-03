@@ -9,6 +9,7 @@ public class CategoriaDTO {
 	private Integer id;
 	private String nome;
 	private List<CategoriaDTO> subCategorias;
+	private CategoriaDTO pai;
 	
 	public CategoriaDTO() {
 		
@@ -42,6 +43,14 @@ public class CategoriaDTO {
 	}
 	public void setSubCategorias(List<CategoriaDTO> subCategorias) {
 		this.subCategorias = subCategorias;
+	}
+
+	public CategoriaDTO getPai() {
+		return pai;
+	}
+
+	public void setPai(CategoriaDTO pai) {
+		this.pai = pai;
 	}
 	
 	
